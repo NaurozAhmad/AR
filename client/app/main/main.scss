@@ -1,8 +1,8 @@
 @mixin transition($value) {
-    -webkit-transition: opacity $value ease-in-out;
-    -moz-transition: opacity $value ease-in-out;
-    -o-transition: opacity $value ease-in-out;
-    transition: opacity $value ease-in-out;
+    -webkit-transition: all $value ease-in-out;
+    -moz-transition: all $value ease-in-out;
+    -o-transition: all $value ease-in-out;
+    transition: all $value ease-in-out;
 }
 
 @mixin collumn-count-gap($count, $gap) {
@@ -70,8 +70,7 @@
             display: table;
             top: 0px;
             left: 0px;
-            opacity: 0;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, 0);
             .wrapper {
                 display: table-cell;
                 vertical-align: middle;
@@ -84,14 +83,18 @@
             }
             h2,
             p {
+                @include transition(.25s);
                 text-align: center;
                 margin: 0px;
-                color: #FFF;
+                color: rgba(255, 255, 255, 0);
             }
         }
         .overlay:hover {
-            opacity: 1;
             background-color: rgba(0, 0, 0, 0.6);
+            h2,
+            p {
+                color: rgba(255, 255, 255, 1);
+            }
         }
     }
     .item-1 {
@@ -125,5 +128,19 @@
                 font-weight: bold;
             }
         }
+    }
+}
+
+.video-row {
+    display: flex;
+    padding-bottom: 60px;
+    .video-data {
+        width: 32%;
+        display: inline-block;
+        padding: 0 30px;
+    }
+    .video-container {
+        width: 59%;
+        display: inline-block;
     }
 }
